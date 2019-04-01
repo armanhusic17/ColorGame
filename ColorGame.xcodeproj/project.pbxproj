@@ -15,6 +15,8 @@
 		11D461C0224BFE730082B27D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D461BE224BFE730082B27D /* Main.storyboard */; };
 		11D461C2224BFE740082B27D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11D461C1224BFE740082B27D /* Assets.xcassets */; };
 		11D461C5224BFE740082B27D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D461C3224BFE740082B27D /* LaunchScreen.storyboard */; };
+		11FEC8812251D305008A258C /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = 11FEC8802251D305008A258C /* spark.sks */; };
+		11FEC8832251D857008A258C /* fireworks.sks in Resources */ = {isa = PBXBuildFile; fileRef = 11FEC8822251D857008A258C /* fireworks.sks */; };
 		11FF2591224C26650024E5C1 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 11FF2590224C26650024E5C1 /* Sounds */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,8 @@
 		11D461C1224BFE740082B27D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11D461C4224BFE740082B27D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11D461C6224BFE740082B27D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11FEC8802251D305008A258C /* spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark.sks; sourceTree = "<group>"; };
+		11FEC8822251D857008A258C /* fireworks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fireworks.sks; sourceTree = "<group>"; };
 		11FF2590224C26650024E5C1 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +68,8 @@
 			children = (
 				11D461B4224BFE720082B27D /* AppDelegate.swift */,
 				11D461B6224BFE730082B27D /* GameScene.sks */,
+				11FEC8802251D305008A258C /* spark.sks */,
+				11FEC8822251D857008A258C /* fireworks.sks */,
 				11D461B8224BFE730082B27D /* Actions.sks */,
 				11D461BA224BFE730082B27D /* GameScene.swift */,
 				11D461BC224BFE730082B27D /* GameViewController.swift */,
@@ -134,6 +140,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11FEC8832251D857008A258C /* fireworks.sks in Resources */,
+				11FEC8812251D305008A258C /* spark.sks in Resources */,
 				11FF2591224C26650024E5C1 /* Sounds in Resources */,
 				11D461C0224BFE730082B27D /* Main.storyboard in Resources */,
 				11D461B7224BFE730082B27D /* GameScene.sks in Resources */,
