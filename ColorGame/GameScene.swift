@@ -11,7 +11,7 @@ import GameplayKit
 
 
 // enumerate 3 enemies
-enum Enemies {
+enum Enemies: Int {
     case small
     case medium
     case large
@@ -71,7 +71,7 @@ class GameScene: SKScene {
     // create enemies for player to interact with
     func createEnemy(type: Enemies, forTrack track:Int) -> SKShapeNode? {
         let enemySprite = SKShapeNode()
-        
+        enemySprite.name = "ENEMY"
         switch type {
         case .small:
             enemySprite.path = CGPath(roundedRect: CGRect(x: -10, y: 0, width:20, height: 70), cornerWidth: 8, cornerHeight: 8, transform: nil)
@@ -101,6 +101,23 @@ class GameScene: SKScene {
         
     }
     
+    // spawn enemies func to be called in didMoveToView
+    func spawnEnemies () {
+        // we are looping through tracks 1 - 7, none on (0,8)
+        for i in 1 ... 7 {
+            let randomEnemyType = Enemies(rawValue: GKRandomSource.sharedRandom().nextInt(upperBound: 3))!
+            if let newEnemy = createEnemy(type: randomEnemyType, forTrack: i){
+                self.addChild(newEnemy)
+            }
+        }
+        self.enumerateChildNodes(withName: "ENEMY") { (node: SKNode, nil) in
+            //going thru each child nodes looking for children with name ENEMY
+            if node.position.y < -150 || node.position.y >  self.size.height + 150 {
+                // if the enemy leaves the screen area remove the node
+                node.removeFromParent()
+            }
+        }
+    }
     
     
     override func didMove(to view: SKView) {
@@ -118,6 +135,11 @@ class GameScene: SKScene {
                 directionArray.append(GKRandomSource.sharedRandom().nextBool())
             }
         }
+        
+        // a sequence that repeats forever to spawn enemies every 2 seconds
+        self.run(SKAction.repeatForever(SKAction.sequence([SKAction.run {
+            self.spawnEnemies()
+            }, SKAction.wait(forDuration: 2)])))
     }
     
     
