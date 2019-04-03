@@ -32,10 +32,24 @@ extension GameScene {
             return
         }
         if let player = self.player {
+            
             let moveAction = SKAction.move(to: CGPoint(x: nextTrack.x, y: player.position.y), duration: 0.2)
+            
+            let up = directionArray[currentTrack+1]
+            
             player.run(moveAction) {
                 self.movingToTrack = false
-            }
+                
+                // check if current track is not the last track with the target
+                if self.currentTrack != 8 {
+                    // inside enclosure we can call self checking if player is moving up or down to add appropriate velocity
+                    self.player?.physicsBody?.velocity = up ? CGVector(dx: 0, dy: self.velocityArray[self.currentTrack]) : CGVector(dx: 0, dy: -self.velocityArray[self.currentTrack])
+                    
+                }else {
+                    //stop movement
+                    self.player?.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                }
+             }
             
             currentTrack += 1
             
@@ -61,8 +75,33 @@ extension GameScene {
         }
     }
     
+    // Move player back to the start -> if player ends up sliding off the screen with a track
+    func movePlayerToStart() {
+        //must unwrap optional player to see if it is available
+        if let player = self.player {
+            // remove it from the gamescene
+            player.removeFromParent()
+            // get rid of the player
+            self.player = nil
+            //create a new player
+            self.createPlayer()
+            // reset the current track back to the start
+            self.currentTrack = 0
+        }
+    }
     
     
+    // Function that uses the reward animation fireworks
+    func nextLevel (playerPhysicsBody:SKPhysicsBody) {
+        // attach the fireworks to the player
+        let emitter = SKEmitterNode(fileNamed: "fireworks.sks")
+        playerPhysicsBody.node?.addChild(emitter!)
+        
+        self.run(SKAction.wait(forDuration: 0.5)){
+            emitter?.removeFromParent()
+            self.movePlayerToStart()
+        }
+    }
     
     
     

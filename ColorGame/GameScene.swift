@@ -68,6 +68,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        // place where movePlayerToStart is called
+        // unwrap optional player to check availability -> will crash app if you claim something is available and it is used while undefined
+        if let player = self.player {
+            //check if players y position is greater than the height of our screen or the players y pos is less than 0 below the scene view
+            if player.position.y > self.size.height || player.position.y < 0 {
+                movePlayerToStart()
+            }
+        }
+        
     }
     
     
@@ -100,7 +109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player?.removeAllActions()
     }
     
-    // function dealing with all contacts
+    // function dealing with all Contact
     func didBegin(_ contact: SKPhysicsContact) {
         var playerBody:SKPhysicsBody
         var otherBody:SKPhysicsBody
@@ -118,9 +127,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if playerBody.categoryBitMask == playerCategory && otherBody.categoryBitMask == enemyCategory {
-            print("ENEMY HIT")
+            // move player back to start if collision with enemy occurs
+            movePlayerToStart()
         } else if playerBody.categoryBitMask == playerCategory && otherBody.categoryBitMask == targetCategory{
-            print("TARGET HIT")
+            // Hitting the target is winning the level
+            // From here send to next level, start winning animation for effects
+            nextLevel(playerPhysicsBody: playerBody)
         }
         
     }
