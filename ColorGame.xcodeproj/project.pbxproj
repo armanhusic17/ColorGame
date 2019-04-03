@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		1104BFAA22541528005CED5E /* GameFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1104BFA922541528005CED5E /* GameFunctions.swift */; };
 		1104BFAC2254212E005CED5E /* GameElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1104BFAB2254212E005CED5E /* GameElements.swift */; };
+		1104BFB922544CCB005CED5E /* powerUp.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1104BFB222544CCB005CED5E /* powerUp.wav */; };
+		1104BFBA22544CCB005CED5E /* move.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1104BFB322544CCB005CED5E /* move.wav */; };
+		1104BFBB22544CCB005CED5E /* MenuHighscoreMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1104BFB422544CCB005CED5E /* MenuHighscoreMusic.mp3 */; };
+		1104BFBC22544CCB005CED5E /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1104BFB522544CCB005CED5E /* background.wav */; };
+		1104BFBD22544CCB005CED5E /* levelCompleted.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1104BFB622544CCB005CED5E /* levelCompleted.wav */; };
+		1104BFBE22544CCB005CED5E /* fail.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1104BFB722544CCB005CED5E /* fail.wav */; };
+		1104BFBF22544CCB005CED5E /* levelUp.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1104BFB822544CCB005CED5E /* levelUp.wav */; };
 		11D461B5224BFE720082B27D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D461B4224BFE720082B27D /* AppDelegate.swift */; };
 		11D461B7224BFE730082B27D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 11D461B6224BFE730082B27D /* GameScene.sks */; };
 		11D461B9224BFE730082B27D /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 11D461B8224BFE730082B27D /* Actions.sks */; };
@@ -19,12 +26,18 @@
 		11D461C5224BFE740082B27D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D461C3224BFE740082B27D /* LaunchScreen.storyboard */; };
 		11FEC8812251D305008A258C /* spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = 11FEC8802251D305008A258C /* spark.sks */; };
 		11FEC8832251D857008A258C /* fireworks.sks in Resources */ = {isa = PBXBuildFile; fileRef = 11FEC8822251D857008A258C /* fireworks.sks */; };
-		11FF2591224C26650024E5C1 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 11FF2590224C26650024E5C1 /* Sounds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1104BFA922541528005CED5E /* GameFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFunctions.swift; sourceTree = "<group>"; };
 		1104BFAB2254212E005CED5E /* GameElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameElements.swift; sourceTree = "<group>"; };
+		1104BFB222544CCB005CED5E /* powerUp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = powerUp.wav; sourceTree = "<group>"; };
+		1104BFB322544CCB005CED5E /* move.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = move.wav; sourceTree = "<group>"; };
+		1104BFB422544CCB005CED5E /* MenuHighscoreMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MenuHighscoreMusic.mp3; sourceTree = "<group>"; };
+		1104BFB522544CCB005CED5E /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = background.wav; sourceTree = "<group>"; };
+		1104BFB622544CCB005CED5E /* levelCompleted.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = levelCompleted.wav; sourceTree = "<group>"; };
+		1104BFB722544CCB005CED5E /* fail.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fail.wav; sourceTree = "<group>"; };
+		1104BFB822544CCB005CED5E /* levelUp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = levelUp.wav; sourceTree = "<group>"; };
 		11D461B1224BFE720082B27D /* ColorGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11D461B4224BFE720082B27D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11D461B6224BFE730082B27D /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -37,7 +50,6 @@
 		11D461C6224BFE740082B27D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11FEC8802251D305008A258C /* spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = spark.sks; sourceTree = "<group>"; };
 		11FEC8822251D857008A258C /* fireworks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fireworks.sks; sourceTree = "<group>"; };
-		11FF2590224C26650024E5C1 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1104BFB122544CCB005CED5E /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				1104BFB222544CCB005CED5E /* powerUp.wav */,
+				1104BFB322544CCB005CED5E /* move.wav */,
+				1104BFB422544CCB005CED5E /* MenuHighscoreMusic.mp3 */,
+				1104BFB522544CCB005CED5E /* background.wav */,
+				1104BFB622544CCB005CED5E /* levelCompleted.wav */,
+				1104BFB722544CCB005CED5E /* fail.wav */,
+				1104BFB822544CCB005CED5E /* levelUp.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		11D461A8224BFE720082B27D = {
 			isa = PBXGroup;
 			children = (
@@ -79,8 +105,8 @@
 				1104BFA922541528005CED5E /* GameFunctions.swift */,
 				1104BFAB2254212E005CED5E /* GameElements.swift */,
 				11D461BC224BFE730082B27D /* GameViewController.swift */,
+				1104BFB122544CCB005CED5E /* Sounds */,
 				11D461BE224BFE730082B27D /* Main.storyboard */,
-				11FF2590224C26650024E5C1 /* Sounds */,
 				11D461C1224BFE740082B27D /* Assets.xcassets */,
 				11D461C3224BFE740082B27D /* LaunchScreen.storyboard */,
 				11D461C6224BFE740082B27D /* Info.plist */,
@@ -147,12 +173,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				11FEC8832251D857008A258C /* fireworks.sks in Resources */,
+				1104BFB922544CCB005CED5E /* powerUp.wav in Resources */,
 				11FEC8812251D305008A258C /* spark.sks in Resources */,
-				11FF2591224C26650024E5C1 /* Sounds in Resources */,
+				1104BFBD22544CCB005CED5E /* levelCompleted.wav in Resources */,
 				11D461C0224BFE730082B27D /* Main.storyboard in Resources */,
+				1104BFBE22544CCB005CED5E /* fail.wav in Resources */,
+				1104BFBF22544CCB005CED5E /* levelUp.wav in Resources */,
 				11D461B7224BFE730082B27D /* GameScene.sks in Resources */,
 				11D461C2224BFE740082B27D /* Assets.xcassets in Resources */,
+				1104BFBA22544CCB005CED5E /* move.wav in Resources */,
 				11D461C5224BFE740082B27D /* LaunchScreen.storyboard in Resources */,
+				1104BFBC22544CCB005CED5E /* background.wav in Resources */,
+				1104BFBB22544CCB005CED5E /* MenuHighscoreMusic.mp3 in Resources */,
 				11D461B9224BFE730082B27D /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,7 +347,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2DYJ6BS3VG;
 				INFOPLIST_FILE = ColorGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -333,7 +365,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2DYJ6BS3VG;
 				INFOPLIST_FILE = ColorGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

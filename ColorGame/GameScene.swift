@@ -15,14 +15,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     
-    var tracksArray:[SKSpriteNode]?  = [SKSpriteNode]()
+    // Nodes
     var player:SKSpriteNode?
     var target:SKSpriteNode?
+    
+    // hud
+    var timeLabel:SKLabelNode?
+    var scoreLabel:SKLabelNode?
+    var currentScore:Int = 0 {
+        // didSet is used when a computed property has changed
+        didSet {
+            self.scoreLabel?.text = "SCORE: \(self.currentScore)"
+        }
+    }
+    var remainingTime:TimeInterval = 60 {
+        didSet {
+            self.timeLabel?.text = "TIME: \(Int(self.remainingTime))"
+        }
+    }
+    
+    // game properties
+    var tracksArray:[SKSpriteNode]?  = [SKSpriteNode]()
     var currentTrack = 0
     var movingToTrack = false
-    
-    
+
+    // Sounds
     let moveSound = SKAction.playSoundFileNamed("move.wav", waitForCompletion: false)
+    var backgroundNoise:SKAudioNode!
+    
     
     // values for speed of enemy, direction enemy blocks are travelling
     let trackVelocities = [180, 200, 250]
@@ -34,16 +54,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let playerCategory:UInt32 = 0x1 << 0 // 1
     let enemyCategory:UInt32 = 0x1 << 1  // 2
     let targetCategory:UInt32 = 0x1 << 2 // 4
+    let powerUpCategory:UInt32 = 0x1 << 3 // 8
     
     
     // Game Entry Point
     override func didMove(to view: SKView) {
         setupTracks()
+        createHUD()
+        launchGameTimer()
         createPlayer()
         createTarget()
         
         // notifications about contacts between objects
         self.physicsWorld.contactDelegate = self
+        
+        //add background noise to game right before tracks are created
+        if let musicURL = Bundle.main.url(forResource: "background", withExtension: "wav") {
+            backgroundNoise = SKAudioNode(url: musicURL)
+            addChild(backgroundNoise)
+        }
+        
         
         tracksArray?.first?.color = UIColor.green
         
@@ -76,7 +106,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 movePlayerToStart()
             }
         }
-        
+        if remainingTime <= 5 {
+            timeLabel?.fontColor = UIColor.red
+        }
     }
     
     
@@ -127,8 +159,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if playerBody.categoryBitMask == playerCategory && otherBody.categoryBitMask == enemyCategory {
+            // sound played when hitting enemy
+            self.run(SKAction.playSoundFileNamed("fail", waitForCompletion: true))
+            
             // move player back to start if collision with enemy occurs
             movePlayerToStart()
+            
+            
         } else if playerBody.categoryBitMask == playerCategory && otherBody.categoryBitMask == targetCategory{
             // Hitting the target is winning the level
             // From here send to next level, start winning animation for effects

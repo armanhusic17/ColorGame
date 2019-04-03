@@ -11,6 +11,17 @@ import GameplayKit
 
 extension GameScene {
     
+    // create a timer
+    func launchGameTimer() {
+        // repeat sequence to minus 1 from time every 1 second
+        let timeAction = SKAction.repeatForever(SKAction.sequence([SKAction.run({
+            self.remainingTime -= 1
+        }), SKAction.wait(forDuration: 1)]))
+        
+        //add to time label
+        timeLabel?.run(timeAction)
+    }
+    
     
     func moveVertically(up:Bool) {
         if up {
@@ -59,11 +70,26 @@ extension GameScene {
     
     // spawn enemies func to be called in didMoveToView
     func spawnEnemies () {
+        // create place to call powerup
+        var randomTrackNumber = 0
+        let createPowerUp = GKRandomSource.sharedRandom().nextBool()
+        
+        if createPowerUp {
+            randomTrackNumber = GKRandomSource.sharedRandom().nextInt(upperBound: 6) + 1
+            if let powerUpObject = self.createPowerUp(forTrack: randomTrackNumber){
+                self.addChild(powerUpObject)
+            }
+        }
+        
+        
         // we are looping through tracks 1 - 7, none on (0,8)
         for i in 1 ... 7 {
-            let randomEnemyType = Enemies(rawValue: GKRandomSource.sharedRandom().nextInt(upperBound: 3))!
-            if let newEnemy = createEnemy(type: randomEnemyType, forTrack: i){
-                self.addChild(newEnemy)
+            
+            if randomTrackNumber != i {
+                let randomEnemyType = Enemies(rawValue: GKRandomSource.sharedRandom().nextInt(upperBound: 3))!
+                if let newEnemy = createEnemy(type: randomEnemyType, forTrack: i){
+                    self.addChild(newEnemy)
+                }
             }
         }
         self.enumerateChildNodes(withName: "ENEMY") { (node: SKNode, nil) in
@@ -91,8 +117,13 @@ extension GameScene {
     }
     
     
+    
     // Function that uses the reward animation fireworks
     func nextLevel (playerPhysicsBody:SKPhysicsBody) {
+        // add points here because nextLevel is level reset
+        currentScore += 1
+        
+        self.run(SKAction.playSoundFileNamed("levelUp", waitForCompletion: true))
         // attach the fireworks to the player
         let emitter = SKEmitterNode(fileNamed: "fireworks.sks")
         playerPhysicsBody.node?.addChild(emitter!)
